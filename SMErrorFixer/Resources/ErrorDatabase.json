@@ -1,0 +1,12 @@
+{
+  "errors": [
+    {
+      "name": "10.3",
+      "displayName": "Error code: 10. Extended: 3",
+      "type": "Save file",
+      "description": "The game failed to save the game and created a .db-journal file.",
+      "occurance": "When selecting a world in the \"SAVED GAMES\" panel.",
+      "fix": "Delete the .db-journal file."
+    }
+  ]
+}
