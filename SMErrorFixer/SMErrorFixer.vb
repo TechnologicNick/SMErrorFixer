@@ -17,9 +17,21 @@
     End Function
 
     Public Sub UpdateSelectedError()
-        Dim e As SMError = GetSelectedError()
-        RichTextBoxDescription.Text = e.Description
-        RichTextBoxOccurance.Text = e.Occurance
-        RichTextBoxFix.Text = e.Fix
+        Dim smError As SMError = GetSelectedError()
+
+        LabelErrorType.Text = "Type: " + smError.Type
+
+        RichTextBoxDescription.Text = smError.Description
+        RichTextBoxOccurance.Text = smError.Occurance
+        RichTextBoxFix.Text = smError.Fix
+    End Sub
+
+    Private Sub ButtonFix_Click(sender As Object, e As EventArgs) Handles ButtonFix.Click
+        Dim smError As SMError = GetSelectedError()
+
+        Select Case smError.Name
+            Case "10.3"
+                ' TODO
+        End Select
     End Sub
 End Class
