@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" UseMySettingsClassName="true">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="UserFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ScrapMechanicFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%ProgramFiles(x86)%\Steam\steamapps\common\Scrap Mechanic</Value>
+    </Setting>
+    <Setting Name="WorkshopFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%ProgramFiles(x86)%\Steam\steamapps\workshop\content\387990</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

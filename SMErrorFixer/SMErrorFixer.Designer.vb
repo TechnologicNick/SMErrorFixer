@@ -26,15 +26,18 @@ Partial Class SMErrorFixer
         Me.ListBoxErrors = New System.Windows.Forms.ListBox()
         Me.LabelErrors = New System.Windows.Forms.Label()
         Me.PanelError = New System.Windows.Forms.Panel()
-        Me.LabelErrorType = New System.Windows.Forms.Label()
-        Me.ButtonFix = New System.Windows.Forms.Button()
-        Me.RichTextBoxDescription = New System.Windows.Forms.RichTextBox()
-        Me.LabelErrorDescription = New System.Windows.Forms.Label()
-        Me.RichTextBoxOccurance = New System.Windows.Forms.RichTextBox()
-        Me.LabelOccurance = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.RichTextBoxFix = New System.Windows.Forms.RichTextBox()
         Me.LabelFix = New System.Windows.Forms.Label()
+        Me.RichTextBoxOccurance = New System.Windows.Forms.RichTextBox()
+        Me.LabelOccurance = New System.Windows.Forms.Label()
+        Me.LabelErrorType = New System.Windows.Forms.Label()
+        Me.Button0 = New System.Windows.Forms.Button()
+        Me.RichTextBoxDescription = New System.Windows.Forms.RichTextBox()
+        Me.LabelErrorDescription = New System.Windows.Forms.Label()
+        Me.FlowLayoutPanelButtons = New System.Windows.Forms.FlowLayoutPanel()
         Me.PanelError.SuspendLayout()
+        Me.FlowLayoutPanelButtons.SuspendLayout()
         Me.SuspendLayout()
         '
         'ListBoxErrors
@@ -62,12 +65,12 @@ Partial Class SMErrorFixer
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelError.Controls.Add(Me.FlowLayoutPanelButtons)
         Me.PanelError.Controls.Add(Me.RichTextBoxFix)
         Me.PanelError.Controls.Add(Me.LabelFix)
         Me.PanelError.Controls.Add(Me.RichTextBoxOccurance)
         Me.PanelError.Controls.Add(Me.LabelOccurance)
         Me.PanelError.Controls.Add(Me.LabelErrorType)
-        Me.PanelError.Controls.Add(Me.ButtonFix)
         Me.PanelError.Controls.Add(Me.RichTextBoxDescription)
         Me.PanelError.Controls.Add(Me.LabelErrorDescription)
         Me.PanelError.Location = New System.Drawing.Point(194, 25)
@@ -75,66 +78,19 @@ Partial Class SMErrorFixer
         Me.PanelError.Size = New System.Drawing.Size(444, 251)
         Me.PanelError.TabIndex = 3
         '
-        'LabelErrorType
+        'Button1
         '
-        Me.LabelErrorType.AutoSize = True
-        Me.LabelErrorType.Location = New System.Drawing.Point(4, 4)
-        Me.LabelErrorType.Name = "LabelErrorType"
-        Me.LabelErrorType.Size = New System.Drawing.Size(77, 13)
-        Me.LabelErrorType.TabIndex = 3
-        Me.LabelErrorType.Text = "Type: Example"
-        '
-        'ButtonFix
-        '
-        Me.ButtonFix.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonFix.Location = New System.Drawing.Point(364, 223)
-        Me.ButtonFix.Name = "ButtonFix"
-        Me.ButtonFix.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonFix.TabIndex = 2
-        Me.ButtonFix.Text = "Fix Error"
-        Me.ButtonFix.UseVisualStyleBackColor = True
-        '
-        'RichTextBoxDescription
-        '
-        Me.RichTextBoxDescription.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RichTextBoxDescription.Location = New System.Drawing.Point(3, 45)
-        Me.RichTextBoxDescription.Name = "RichTextBoxDescription"
-        Me.RichTextBoxDescription.ReadOnly = True
-        Me.RichTextBoxDescription.Size = New System.Drawing.Size(436, 46)
-        Me.RichTextBoxDescription.TabIndex = 1
-        Me.RichTextBoxDescription.Text = resources.GetString("RichTextBoxDescription.Text")
-        '
-        'LabelErrorDescription
-        '
-        Me.LabelErrorDescription.AutoSize = True
-        Me.LabelErrorDescription.Location = New System.Drawing.Point(4, 29)
-        Me.LabelErrorDescription.Name = "LabelErrorDescription"
-        Me.LabelErrorDescription.Size = New System.Drawing.Size(60, 13)
-        Me.LabelErrorDescription.TabIndex = 0
-        Me.LabelErrorDescription.Text = "Description"
-        '
-        'RichTextBoxOccurance
-        '
-        Me.RichTextBoxOccurance.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RichTextBoxOccurance.Location = New System.Drawing.Point(3, 110)
-        Me.RichTextBoxOccurance.Name = "RichTextBoxOccurance"
-        Me.RichTextBoxOccurance.ReadOnly = True
-        Me.RichTextBoxOccurance.Size = New System.Drawing.Size(436, 46)
-        Me.RichTextBoxOccurance.TabIndex = 5
-        Me.RichTextBoxOccurance.Text = resources.GetString("RichTextBoxOccurance.Text")
-        '
-        'LabelOccurance
-        '
-        Me.LabelOccurance.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LabelOccurance.AutoSize = True
-        Me.LabelOccurance.Location = New System.Drawing.Point(4, 94)
-        Me.LabelOccurance.Name = "LabelOccurance"
-        Me.LabelOccurance.Size = New System.Drawing.Size(60, 13)
-        Me.LabelOccurance.TabIndex = 4
-        Me.LabelOccurance.Text = "Occurance"
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.AutoSize = True
+        Me.Button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Button1.Location = New System.Drawing.Point(280, 0)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
+        Me.Button1.MinimumSize = New System.Drawing.Size(75, 23)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 8
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'RichTextBoxFix
         '
@@ -157,6 +113,84 @@ Partial Class SMErrorFixer
         Me.LabelFix.TabIndex = 6
         Me.LabelFix.Text = "Fix"
         '
+        'RichTextBoxOccurance
+        '
+        Me.RichTextBoxOccurance.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RichTextBoxOccurance.Location = New System.Drawing.Point(3, 110)
+        Me.RichTextBoxOccurance.Name = "RichTextBoxOccurance"
+        Me.RichTextBoxOccurance.ReadOnly = True
+        Me.RichTextBoxOccurance.Size = New System.Drawing.Size(436, 46)
+        Me.RichTextBoxOccurance.TabIndex = 5
+        Me.RichTextBoxOccurance.Text = resources.GetString("RichTextBoxOccurance.Text")
+        '
+        'LabelOccurance
+        '
+        Me.LabelOccurance.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelOccurance.AutoSize = True
+        Me.LabelOccurance.Location = New System.Drawing.Point(4, 94)
+        Me.LabelOccurance.Name = "LabelOccurance"
+        Me.LabelOccurance.Size = New System.Drawing.Size(60, 13)
+        Me.LabelOccurance.TabIndex = 4
+        Me.LabelOccurance.Text = "Occurance"
+        '
+        'LabelErrorType
+        '
+        Me.LabelErrorType.AutoSize = True
+        Me.LabelErrorType.Location = New System.Drawing.Point(4, 4)
+        Me.LabelErrorType.Name = "LabelErrorType"
+        Me.LabelErrorType.Size = New System.Drawing.Size(77, 13)
+        Me.LabelErrorType.TabIndex = 3
+        Me.LabelErrorType.Text = "Type: Example"
+        '
+        'Button0
+        '
+        Me.Button0.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button0.AutoSize = True
+        Me.Button0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Button0.Location = New System.Drawing.Point(361, 0)
+        Me.Button0.Margin = New System.Windows.Forms.Padding(3, 0, 0, 0)
+        Me.Button0.MinimumSize = New System.Drawing.Size(75, 23)
+        Me.Button0.Name = "Button0"
+        Me.Button0.Size = New System.Drawing.Size(75, 23)
+        Me.Button0.TabIndex = 2
+        Me.Button0.Text = "Button0"
+        Me.Button0.UseVisualStyleBackColor = True
+        '
+        'RichTextBoxDescription
+        '
+        Me.RichTextBoxDescription.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RichTextBoxDescription.Location = New System.Drawing.Point(3, 45)
+        Me.RichTextBoxDescription.Name = "RichTextBoxDescription"
+        Me.RichTextBoxDescription.ReadOnly = True
+        Me.RichTextBoxDescription.Size = New System.Drawing.Size(436, 46)
+        Me.RichTextBoxDescription.TabIndex = 1
+        Me.RichTextBoxDescription.Text = resources.GetString("RichTextBoxDescription.Text")
+        '
+        'LabelErrorDescription
+        '
+        Me.LabelErrorDescription.AutoSize = True
+        Me.LabelErrorDescription.Location = New System.Drawing.Point(4, 29)
+        Me.LabelErrorDescription.Name = "LabelErrorDescription"
+        Me.LabelErrorDescription.Size = New System.Drawing.Size(60, 13)
+        Me.LabelErrorDescription.TabIndex = 0
+        Me.LabelErrorDescription.Text = "Description"
+        '
+        'FlowLayoutPanelButtons
+        '
+        Me.FlowLayoutPanelButtons.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanelButtons.Controls.Add(Me.Button0)
+        Me.FlowLayoutPanelButtons.Controls.Add(Me.Button1)
+        Me.FlowLayoutPanelButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.FlowLayoutPanelButtons.Location = New System.Drawing.Point(3, 224)
+        Me.FlowLayoutPanelButtons.Margin = New System.Windows.Forms.Padding(0)
+        Me.FlowLayoutPanelButtons.Name = "FlowLayoutPanelButtons"
+        Me.FlowLayoutPanelButtons.Size = New System.Drawing.Size(436, 23)
+        Me.FlowLayoutPanelButtons.TabIndex = 9
+        '
         'SMErrorFixer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -169,6 +203,8 @@ Partial Class SMErrorFixer
         Me.Text = "Scrap Mechanic Error Fixer"
         Me.PanelError.ResumeLayout(False)
         Me.PanelError.PerformLayout()
+        Me.FlowLayoutPanelButtons.ResumeLayout(False)
+        Me.FlowLayoutPanelButtons.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -178,10 +214,12 @@ Partial Class SMErrorFixer
     Friend WithEvents PanelError As Panel
     Friend WithEvents LabelErrorDescription As Label
     Friend WithEvents RichTextBoxDescription As RichTextBox
-    Friend WithEvents ButtonFix As Button
+    Friend WithEvents Button0 As Button
     Friend WithEvents LabelErrorType As Label
     Friend WithEvents RichTextBoxFix As RichTextBox
     Friend WithEvents LabelFix As Label
     Friend WithEvents RichTextBoxOccurance As RichTextBox
     Friend WithEvents LabelOccurance As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents FlowLayoutPanelButtons As FlowLayoutPanel
 End Class

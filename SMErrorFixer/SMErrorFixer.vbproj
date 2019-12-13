@@ -14,6 +14,8 @@
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,11 +50,27 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.111.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.111.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.111.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.111.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -76,7 +94,35 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseHelper.vb" />
     <Compile Include="ErrorDatabase.vb" />
+    <Compile Include="Form10ext3.Designer.vb">
+      <DependentUpon>Form10ext3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form10ext3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMissingBlueprintFile.Designer.vb">
+      <DependentUpon>FormMissingBlueprintFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormMissingBlueprintFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPlayerOutOfWorld.Designer.vb">
+      <DependentUpon>FormPlayerOutOfWorld.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPlayerOutOfWorld.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUnableToFindMod.Designer.vb">
+      <DependentUpon>FormUnableToFindMod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormUnableToFindMod.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModManager.vb" />
+    <Compile Include="Shape.vb" />
+    <Compile Include="Player.vb" />
     <Compile Include="SMError.vb" />
     <Compile Include="SMErrorFixer.vb">
       <SubType>Form</SubType>
@@ -100,8 +146,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SMMod.vb" />
+    <Compile Include="UGCDescription.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form10ext3.resx">
+      <DependentUpon>Form10ext3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPlayerOutOfWorld.resx">
+      <DependentUpon>FormPlayerOutOfWorld.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUnableToFindMod.resx">
+      <DependentUpon>FormUnableToFindMod.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -128,4 +185,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ProjectExtensions />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
 </Project>

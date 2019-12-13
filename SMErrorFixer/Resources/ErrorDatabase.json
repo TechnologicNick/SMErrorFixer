@@ -1,12 +1,44 @@
 {
   "errors": [
     {
-      "name": "10.3",
+      "name": "10ext3",
       "displayName": "Error code: 10. Extended: 3",
       "type": "Save file",
       "description": "The game failed to save the game and created a .db-journal file.",
       "occurance": "When selecting a world in the \"SAVED GAMES\" panel.",
-      "fix": "Delete the .db-journal file."
+      "fix": "Delete the .db-journal file.",
+      "button0": "Fix Error",
+      "button1": "Fix All"
+    },
+    {
+      "name": "player_out_of_world",
+      "displayName": "Player out of world",
+      "type": "Save file",
+      "description": "A player managed to get ouside of the world and needs to go back inside.",
+      "occurance": "Player went really fast.",
+      "fix": "Change or reset the position of the player.",
+      "button0": "Change position",
+      "button1": ""
+    },
+    {
+      "name": "unable_to_find_mod",
+      "displayName": "Unable to find mod",
+      "type": "Save file",
+      "description": "The world requires an unknown mod.",
+      "occurance": "When trying to load a world that requires an unknown mod.",
+      "fix": "Get all the used UUIDs in the world and find the unknown mod.",
+      "button0": "Select save file",
+      "button1": ""
+    },
+    {
+      "name": "missing_blueprint_file",
+      "displayName": "Missing blueprint file!",
+      "type": "Blueprint file",
+      "description": "When deleting a blueprint the game only deleted the blueprint.json file, instead of the whole folder.",
+      "occurance": "When starting the game.",
+      "fix": "Delete the folder of the blueprint.",
+      "button0": "Fix All",
+      "button1": ""
     }
   ]
 }
