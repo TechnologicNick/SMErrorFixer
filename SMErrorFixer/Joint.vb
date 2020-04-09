@@ -1,13 +1,11 @@
-﻿Imports System.Data.SQLite
-Imports SMErrorFixer
-
-Public Class Shape
+﻿Public Class Joint
     Implements IUuidItem
 
-    Public Shared ShapeList As Dictionary(Of Integer, Shape) = New Dictionary(Of Integer, Shape)
+    Public Shared JointList As Dictionary(Of Integer, Joint) = New Dictionary(Of Integer, Joint)
 
     Public Id As Integer
-    Public BodyId As Integer
+    Public ChildShapeIdA As Integer
+    Public ChildShapeIdB As Integer
     Public Blob As Byte()
     Public ReverseBlob As Byte()
 
@@ -22,9 +20,10 @@ Public Class Shape
         End Set
     End Property
 
-    Public Sub New(ShapeId As Integer, BodyId As Integer, Blob As Byte())
-        Me.Id = ShapeId
-        Me.BodyId = BodyId
+    Public Sub New(JointId As Integer, ChildShapeIdA As Integer, ChildShapeIdB As Integer, Blob As Byte())
+        Me.Id = JointId
+        Me.ChildShapeIdA = ChildShapeIdA
+        Me.ChildShapeIdB = ChildShapeIdB
         Me.Blob = Blob
         Me.ReverseBlob = Me.Blob.Clone()
 
@@ -38,12 +37,12 @@ Public Class Shape
 
         ParseBlob()
 
-        ShapeList.Add(Me.Id, Me)
+        JointList.Add(Me.Id, Me)
     End Sub
 
     Public Sub ParseBlob()
         Dim uuidBytes(15) As Byte
-        Array.Copy(Me.Blob, Me.Blob.Length - 27, uuidBytes, 0, 16)
+        Array.Copy(Me.Blob, Me.Blob.Length - 31, uuidBytes, 0, 16)
         Array.Reverse(uuidBytes, 0, 4) ' .NET Guid != (RFC4122) UUID
         Array.Reverse(uuidBytes, 4, 2)
         Array.Reverse(uuidBytes, 6, 2)
@@ -54,18 +53,18 @@ Public Class Shape
     End Sub
 
     Public Sub DebugData()
-        Debug.WriteLine("Shape ({0}): Id = {1}, BodyId = {2}, UUID = {3}", Me.Id, Me.Id, Me.BodyId, Me.UUID)
+        Debug.WriteLine("Shape ({0}): Id = {1}, ChildShapeIdA = {2}, ChildShapeIdA = {3}, UUID = {4}", Me.Id, Me.Id, Me.ChildShapeIdA, Me.ChildShapeIdB, Me.UUID)
     End Sub
 
 
 
 
-    Public Shared Function GetShape(ShapeId As Integer)
-        Return ShapeList.Item(ShapeId)
+    Public Shared Function GetShape(JointId As Integer)
+        Return JointList.Item(JointId)
     End Function
 
-    Public Shared Sub ResetShapeList()
-        ShapeList.Clear()
+    Public Shared Sub ResetJointList()
+        JointList.Clear()
     End Sub
 
 End Class

@@ -120,6 +120,8 @@
     <Compile Include="FormUnableToFindMod.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="IUuidItem.vb" />
+    <Compile Include="Joint.vb" />
     <Compile Include="ModManager.vb" />
     <Compile Include="Shape.vb" />
     <Compile Include="Player.vb" />
