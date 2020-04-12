@@ -17,14 +17,19 @@ public:
 	void Init();
 	void Shutdown();
 
+	bool m_LoopRunning = false;
 	void LoopRunCallbacks();
 
 	void DownloadSubscribedItems();
-	bool SendQueryUGCRequestPage(int page);
+	void SendQueryUGCRequests();
+	int UnsubscribeAccessDenied();
 
 	std::vector<PublishedFileId_t> m_SubscribedItems;
 	int m_NumSubscribedItems;
 	int m_CurrentPage = 0;
+
+	std::vector<SteamUGCDetails_t> m_SubscribedItemDetails;
+	bool m_RequireUnsubscribeConfirmation = true;
 
 private:
 	CSteamInteractor *m_pSteamInteractor;
@@ -32,6 +37,8 @@ private:
 	STEAM_CALLBACK(CSteamInteractor, OnDownloadItemResult, DownloadItemResult_t);
 	//void OnDownloadItemResult(DownloadItemResult_t pCallback);
 	
+	bool SendQueryUGCRequestPage(int page);
 	void OnSteamUGCQueryCompleted(SteamUGCQueryCompleted_t *pCallback, bool bIOFailure);
 	CCallResult<CSteamInteractor, SteamUGCQueryCompleted_t> m_SteamUGCQueryCompletedCallResult;
+	void OnAllSteamUGCQueriesCompleted();
 };
