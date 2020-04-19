@@ -11,15 +11,13 @@ Public Class SMMod
     Private Valid As Boolean = True
 
     Public Sub New(path As String)
-        If Not File.Exists(path & "\description.json") Then
+        If Not File.Exists(System.IO.Path.Combine(path, "description.json")) Then
             Debug.WriteLine("Mod at location """ + path + """ doesn't have a description file! Ignoring mod...")
             Return
         End If
 
-        Dim json As JObject = JObject.Parse(File.ReadAllText(path & "\description.json"))
-
         Try
-            Me.Description = JsonConvert.DeserializeObject(Of UGCDescription)(json.ToString()) ' I don't know how to do this without converting to a string
+            Me.Description = UGCDescription.FromWorkshopItem(path)
         Catch ex As Exception
             Me.Valid = False
         End Try

@@ -49,6 +49,8 @@
                 FormPlayerOutOfWorld.Show()
             Case "unable_to_find_mod"
                 FormUnableToFindMod.SelectFile()
+            Case "missing_blueprint_file"
+                MissingBlueprintFile.Fix()
             Case "access_denied"
                 AccessDenied.Fix()
         End Select
