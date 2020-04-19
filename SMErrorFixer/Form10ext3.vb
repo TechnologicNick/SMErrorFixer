@@ -2,10 +2,6 @@
 Imports System.Data.SQLite
 
 Public Class Form10ext3
-    Private Sub Form10ext3_Load() Handles MyBase.Load
-
-    End Sub
-
     Private Sub ButtonSelectSaveFiles_Click(sender As Object, e As EventArgs) Handles ButtonSelectSaveFiles.Click
         SelectFiles()
     End Sub
@@ -59,5 +55,4 @@ Public Class Form10ext3
         GC.WaitForPendingFinalizers()
 
     End Sub
-
 End Class

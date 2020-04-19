@@ -6,7 +6,7 @@
       "type": "Save file",
       "description": "The game failed to save the game and created a .db-journal file.",
       "occurance": "When selecting a world in the \"SAVED GAMES\" panel.",
-      "fix": "Delete the .db-journal file.",
+      "fix": "Execute any SQL command.",
       "button0": "Fix Error",
       "button1": "Fix All"
     },
@@ -37,6 +37,16 @@
       "description": "When deleting a blueprint the game only deleted the blueprint.json file, instead of the whole folder.",
       "occurance": "When starting the game.",
       "fix": "Delete the folder of the blueprint.",
+      "button0": "Fix All",
+      "button1": ""
+    },
+    {
+      "name": "access_denied",
+      "displayName": "Access denied",
+      "type": "Steam",
+      "description": "You're subscribed to a Steam Workshop item you don't have access to.",
+      "occurance": "When starting the game.",
+      "fix": "Unsubscribe from the Steam Workshop items.",
       "button0": "Fix All",
       "button1": ""
     }

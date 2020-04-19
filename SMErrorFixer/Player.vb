@@ -1,8 +1,7 @@
 ﻿Imports System.Data.SQLite
+Imports System.Text.RegularExpressions
 
 Public Class Player
-
-    Public Shared PlayerList As Dictionary(Of Integer, Player) = New Dictionary(Of Integer, Player)
 
     Public Id As Integer
     Public Blob As Byte()
@@ -13,6 +12,8 @@ Public Class Player
     Public X As Single
     Public Y As Single
     Public Z As Single
+
+    Public Name As String
 
     Public Sub New(PlayerId As Integer, Blob As Byte())
         Me.Id = PlayerId
@@ -29,7 +30,7 @@ Public Class Player
             Dim aSingle As Single = BitConverter.ToSingle(Me.Blob, i)
 
             'If Math.Abs(aSingle) > 0.001 And Math.Abs(aSingle) < 2000 Then
-            If (Math.Abs(aSingle) > 0.00001 And Math.Abs(aSingle) < 2000) Or Math.Abs(aSingle) = 0 Or True Then
+            If (Math.Abs(aSingle) > 0.00001 And Math.Abs(aSingle) < 2000) Or Math.Abs(aSingle) = 0 Or False Then
                 Debug.Write(i)
                 Debug.Write(" ")
                 Debug.Write(Me.Blob.Length - i)
@@ -74,8 +75,6 @@ Public Class Player
         'Next
 
         ParseBlob()
-
-        PlayerList.Add(Me.Id, Me)
     End Sub
 
     Public Sub ParseBlob()
@@ -115,13 +114,21 @@ Public Class Player
 
 
 
+    Public Function RequestPlayerName() As String
+        If IsNothing(Me.Name) Then
+            Dim webClient As New System.Net.WebClient
+            Dim result As String = webClient.DownloadString("https://steamcommunity.com/profiles/" & Me.SteamId.ToString())
 
-    Public Shared Function GetPlayer(PlayerId As Integer)
-        Return PlayerList.Item(PlayerId)
+            Dim regex As Regex = New Regex("<span class=""actual_persona_name"">(.*?)<\/span>")
+            Dim match As Match = regex.Match(result)
+
+            Me.Name = match.Groups(1).Value
+
+            Debug.WriteLine(Me.Name)
+            Return Me.Name
+        Else
+            Return Me.Name
+        End If
     End Function
-
-    Public Shared Sub ResetPlayerList()
-        PlayerList.Clear()
-    End Sub
 
 End Class

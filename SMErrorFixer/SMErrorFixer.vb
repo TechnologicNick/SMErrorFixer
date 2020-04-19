@@ -19,7 +19,7 @@
     Public Sub UpdateSelectedError()
         Dim smError As SMError = GetSelectedError()
 
-        LabelErrorType.Text = "Type: " + smError.Type
+        LabelErrorType.Text = "Type: " & smError.Type
 
         RichTextBoxDescription.Text = smError.Description
         RichTextBoxOccurance.Text = smError.Occurance
@@ -43,10 +43,12 @@
                 FormPlayerOutOfWorld.Show()
             Case "unable_to_find_mod"
                 FormUnableToFindMod.SelectFile()
+            Case "access_denied"
+                AccessDenied.Fix()
         End Select
     End Sub
 
-    Private Sub ButtonFix1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim smError As SMError = GetSelectedError()
 
         Select Case smError.Name
