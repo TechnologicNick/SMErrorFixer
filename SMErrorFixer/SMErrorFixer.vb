@@ -1,11 +1,17 @@
 ﻿Public Class SMErrorFixer
     Private Sub SMErrorFixer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Settings.Load()
+
         ErrorDatabase.LoadDatabase()
 
         ListBoxErrors.DataSource = ErrorDatabase.SMErrorList
         ListBoxErrors.DisplayMember = "DisplayName"
 
         ListBoxErrors.SelectedIndex = 0
+    End Sub
+
+    Private Sub SMErrorFixer_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
+        Settings.Save()
     End Sub
 
     Private Sub ListBoxErrors_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxErrors.SelectedIndexChanged

@@ -53,42 +53,6 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property UserFolder() As String
-            Get
-                Return CType(Me("UserFolder"),String)
-            End Get
-            Set
-                Me("UserFolder") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("%ProgramFiles(x86)%\Steam\steamapps\common\Scrap Mechanic")>  _
-        Public Property ScrapMechanicFolder() As String
-            Get
-                Return CType(Me("ScrapMechanicFolder"),String)
-            End Get
-            Set
-                Me("ScrapMechanicFolder") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("%ProgramFiles(x86)%\Steam\steamapps\workshop\content\387990")>  _
-        Public Property WorkshopFolder() As String
-            Get
-                Return CType(Me("WorkshopFolder"),String)
-            End Get
-            Set
-                Me("WorkshopFolder") = value
-            End Set
-        End Property
     End Class
 End Namespace
 

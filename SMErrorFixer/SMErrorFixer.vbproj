@@ -118,12 +118,6 @@
     <Compile Include="Fixes\Form10ext3.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fixes\FormMissingBlueprintFile.Designer.vb">
-      <DependentUpon>FormMissingBlueprintFile.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Fixes\FormMissingBlueprintFile.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Fixes\FormPlayerOutOfWorld.Designer.vb">
       <DependentUpon>FormPlayerOutOfWorld.vb</DependentUpon>
     </Compile>
@@ -136,9 +130,11 @@
     <Compile Include="Fixes\FormUnableToFindMod.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Fixes\MissingBlueprintFile.vb" />
     <Compile Include="IUuidItem.vb" />
     <Compile Include="Joint.vb" />
     <Compile Include="ModManager.vb" />
+    <Compile Include="Settings.vb" />
     <Compile Include="Shape.vb" />
     <Compile Include="Player.vb" />
     <Compile Include="SMError.vb" />
@@ -166,6 +162,7 @@
     </Compile>
     <Compile Include="SMMod.vb" />
     <Compile Include="UGCDescription.vb" />
+    <Compile Include="Util\UserDirectory.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Fixes\Form10ext3.resx">

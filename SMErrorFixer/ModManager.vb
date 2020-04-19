@@ -10,10 +10,8 @@ Public Class ModManager
 
         Dim userPath As String = Environment.ExpandEnvironmentVariables("%APPDATA%\Axolot Games\Scrap Mechanic\User\")
         If Directory.Exists(userPath) Then
-            My.Settings.UserFolder = Directory.GetDirectories(userPath).OrderByDescending(Function(d) New DirectoryInfo(d).LastWriteTime).First()
-
-            If Directory.Exists(My.Settings.UserFolder & "\Mods") Then
-                paths.Add(My.Settings.UserFolder & "\Mods")
+            If Directory.Exists(UserDirectory.GetMods()) Then
+                paths.Add(UserDirectory.GetMods())
             Else
                 Debug.WriteLine("User doesn't have a mods folder!")
             End If
@@ -22,7 +20,7 @@ Public Class ModManager
             MessageBox.Show(SMErrorFixer, "Unable to find user folder at" & vbNewLine & vbNewLine & userPath, "Folder not found", MessageBoxButtons.OK)
         End If
 
-        paths.Add(Environment.ExpandEnvironmentVariables(My.Settings.WorkshopFolder))
+        paths.Add(Environment.ExpandEnvironmentVariables(Settings.GetInstance().WorkshopDirectory))
 
         Return paths
     End Function
@@ -59,7 +57,7 @@ Public Class ModManager
         Next
 
         'TODO
-        Dim smShapesetsFolder As String = Environment.ExpandEnvironmentVariables(My.Settings.ScrapMechanicFolder) & "\Data\Objects\Database\ShapeSets"
+        Dim smShapesetsFolder As String = Path.Combine(Environment.ExpandEnvironmentVariables(Settings.GetInstance().InstallDirectory), "Data\Objects\Database\ShapeSets")
         If Directory.Exists(smShapesetsFolder) Then
 
             Dim vanillaDescription As UGCDescription = New UGCDescription()
