@@ -26,16 +26,16 @@ Partial Class SMErrorFixer
         Me.ListBoxErrors = New System.Windows.Forms.ListBox()
         Me.LabelErrors = New System.Windows.Forms.Label()
         Me.PanelError = New System.Windows.Forms.Panel()
+        Me.FlowLayoutPanelButtons = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Button0 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.RichTextBoxFix = New System.Windows.Forms.RichTextBox()
         Me.LabelFix = New System.Windows.Forms.Label()
         Me.RichTextBoxOccurance = New System.Windows.Forms.RichTextBox()
         Me.LabelOccurance = New System.Windows.Forms.Label()
         Me.LabelErrorType = New System.Windows.Forms.Label()
-        Me.Button0 = New System.Windows.Forms.Button()
         Me.RichTextBoxDescription = New System.Windows.Forms.RichTextBox()
         Me.LabelErrorDescription = New System.Windows.Forms.Label()
-        Me.FlowLayoutPanelButtons = New System.Windows.Forms.FlowLayoutPanel()
         Me.PanelError.SuspendLayout()
         Me.FlowLayoutPanelButtons.SuspendLayout()
         Me.SuspendLayout()
@@ -77,6 +77,33 @@ Partial Class SMErrorFixer
         Me.PanelError.Name = "PanelError"
         Me.PanelError.Size = New System.Drawing.Size(444, 251)
         Me.PanelError.TabIndex = 3
+        '
+        'FlowLayoutPanelButtons
+        '
+        Me.FlowLayoutPanelButtons.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.FlowLayoutPanelButtons.Controls.Add(Me.Button0)
+        Me.FlowLayoutPanelButtons.Controls.Add(Me.Button1)
+        Me.FlowLayoutPanelButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
+        Me.FlowLayoutPanelButtons.Location = New System.Drawing.Point(3, 224)
+        Me.FlowLayoutPanelButtons.Margin = New System.Windows.Forms.Padding(0)
+        Me.FlowLayoutPanelButtons.Name = "FlowLayoutPanelButtons"
+        Me.FlowLayoutPanelButtons.Size = New System.Drawing.Size(436, 23)
+        Me.FlowLayoutPanelButtons.TabIndex = 9
+        '
+        'Button0
+        '
+        Me.Button0.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button0.AutoSize = True
+        Me.Button0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Button0.Location = New System.Drawing.Point(361, 0)
+        Me.Button0.Margin = New System.Windows.Forms.Padding(3, 0, 0, 0)
+        Me.Button0.MinimumSize = New System.Drawing.Size(75, 23)
+        Me.Button0.Name = "Button0"
+        Me.Button0.Size = New System.Drawing.Size(75, 23)
+        Me.Button0.TabIndex = 2
+        Me.Button0.Text = "Button0"
+        Me.Button0.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -143,20 +170,6 @@ Partial Class SMErrorFixer
         Me.LabelErrorType.TabIndex = 3
         Me.LabelErrorType.Text = "Type: Example"
         '
-        'Button0
-        '
-        Me.Button0.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button0.AutoSize = True
-        Me.Button0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.Button0.Location = New System.Drawing.Point(361, 0)
-        Me.Button0.Margin = New System.Windows.Forms.Padding(3, 0, 0, 0)
-        Me.Button0.MinimumSize = New System.Drawing.Size(75, 23)
-        Me.Button0.Name = "Button0"
-        Me.Button0.Size = New System.Drawing.Size(75, 23)
-        Me.Button0.TabIndex = 2
-        Me.Button0.Text = "Button0"
-        Me.Button0.UseVisualStyleBackColor = True
-        '
         'RichTextBoxDescription
         '
         Me.RichTextBoxDescription.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -178,19 +191,6 @@ Partial Class SMErrorFixer
         Me.LabelErrorDescription.TabIndex = 0
         Me.LabelErrorDescription.Text = "Description"
         '
-        'FlowLayoutPanelButtons
-        '
-        Me.FlowLayoutPanelButtons.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.FlowLayoutPanelButtons.Controls.Add(Me.Button0)
-        Me.FlowLayoutPanelButtons.Controls.Add(Me.Button1)
-        Me.FlowLayoutPanelButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.FlowLayoutPanelButtons.Location = New System.Drawing.Point(3, 224)
-        Me.FlowLayoutPanelButtons.Margin = New System.Windows.Forms.Padding(0)
-        Me.FlowLayoutPanelButtons.Name = "FlowLayoutPanelButtons"
-        Me.FlowLayoutPanelButtons.Size = New System.Drawing.Size(436, 23)
-        Me.FlowLayoutPanelButtons.TabIndex = 9
-        '
         'SMErrorFixer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -199,6 +199,7 @@ Partial Class SMErrorFixer
         Me.Controls.Add(Me.PanelError)
         Me.Controls.Add(Me.LabelErrors)
         Me.Controls.Add(Me.ListBoxErrors)
+        Me.Icon = My.Resources.SMErrorFixer_Icon
         Me.Name = "SMErrorFixer"
         Me.Text = "Scrap Mechanic Error Fixer"
         Me.PanelError.ResumeLayout(False)

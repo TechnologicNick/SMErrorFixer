@@ -61,11 +61,36 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to .
+        '''  Looks up a localized string similar to {
+        '''  &quot;errors&quot;: [
+        '''    {
+        '''      &quot;name&quot;: &quot;10ext3&quot;,
+        '''      &quot;displayName&quot;: &quot;Error code: 10. Extended: 3&quot;,
+        '''      &quot;type&quot;: &quot;Save file&quot;,
+        '''      &quot;description&quot;: &quot;The game failed to save the game and created a .db-journal file.&quot;,
+        '''      &quot;occurance&quot;: &quot;When selecting a world in the \&quot;SAVED GAMES\&quot; panel.&quot;,
+        '''      &quot;fix&quot;: &quot;Execute any SQL command.&quot;,
+        '''      &quot;button0&quot;: &quot;Fix Error&quot;,
+        '''      &quot;button1&quot;: &quot;Fix All&quot;
+        '''    },
+        '''    {
+        '''      &quot;name&quot;: &quot;player_out_of_world&quot;,
+        '''      &quot;displayName&quot;: &quot;Player out of world&quot;,
+        '''      &quot;type&quot;: &quot;S [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property ErrorDatabase() As String
             Get
                 Return ResourceManager.GetString("ErrorDatabase", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        '''</summary>
+        Friend ReadOnly Property SMErrorFixer_Icon() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("SMErrorFixer_Icon", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
             End Get
         End Property
     End Module

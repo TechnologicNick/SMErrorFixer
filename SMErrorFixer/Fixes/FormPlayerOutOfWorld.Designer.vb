@@ -22,6 +22,7 @@ Partial Class FormPlayerOutOfWorld
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormPlayerOutOfWorld))
         Me.OpenFileDialogDB = New System.Windows.Forms.OpenFileDialog()
         Me.ButtonSelectSaveFile = New System.Windows.Forms.Button()
         Me.DataGridViewPlayers = New System.Windows.Forms.DataGridView()
@@ -134,6 +135,7 @@ Partial Class FormPlayerOutOfWorld
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridViewPlayers)
         Me.Controls.Add(Me.ButtonSelectSaveFile)
+        Me.Icon = My.Resources.SMErrorFixer_Icon
         Me.Name = "FormPlayerOutOfWorld"
         Me.Text = "Fix player out of world"
         CType(Me.DataGridViewPlayers, System.ComponentModel.ISupportInitialize).EndInit()
