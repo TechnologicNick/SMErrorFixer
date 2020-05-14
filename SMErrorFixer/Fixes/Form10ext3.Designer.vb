@@ -22,7 +22,6 @@ Partial Class Form10ext3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form10ext3))
         Me.ButtonSelectSaveFiles = New System.Windows.Forms.Button()
         Me.ButtonFixAll = New System.Windows.Forms.Button()
         Me.OpenFileDialogDBJournal = New System.Windows.Forms.OpenFileDialog()
@@ -64,7 +63,7 @@ Partial Class Form10ext3
         Me.ClientSize = New System.Drawing.Size(230, 46)
         Me.Controls.Add(Me.ButtonFixAll)
         Me.Controls.Add(Me.ButtonSelectSaveFiles)
-        Me.Icon = My.Resources.SMErrorFixer_Icon
+        Me.Icon = Global.SMErrorFixer.My.Resources.Resources.SMErrorFixer_Icon
         Me.Name = "Form10ext3"
         Me.Text = "Fix Error"
         Me.ResumeLayout(False)

@@ -5,6 +5,7 @@ Imports System.Threading
 
 Public Class FormPlayerOutOfWorld
     Public connection As SQLiteConnection
+    Public dbHelper As DatabaseHelper
     Public PlayerList As Dictionary(Of Integer, Player) = New Dictionary(Of Integer, Player)
 
     Private Sub FormPlayerOutOfWorld_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -31,12 +32,10 @@ Public Class FormPlayerOutOfWorld
     Public Sub OpenDB(file As String)
         DisposeDB()
 
-        Debug.WriteLine("Opening database: " & file)
+        connection = DatabaseHelper.CreateConnection(file)
 
-        connection = New SQLiteConnection("Data Source = " + file + "; PRAGMA journal_mode = DELETE;") 'journal_mode already defaults to DELETE, but just to make sure
-        connection.Open()
-
-        DatabaseHelper.GetSaveGameVersion(connection)
+        dbHelper = New DatabaseHelper(connection)
+        dbHelper.VersionWarning(24)
 
         GetPlayers()
 
@@ -46,7 +45,7 @@ Public Class FormPlayerOutOfWorld
     Public Sub DisposeDB()
         If connection IsNot Nothing Then
             Debug.WriteLine("Disposing of old database connection...")
-            ResetPlayerList()
+            PlayerList.Clear()
 
             'connection.Dispose()
 
@@ -124,10 +123,6 @@ Public Class FormPlayerOutOfWorld
     Public Function GetPlayer(PlayerId As Integer)
         Return PlayerList.Item(PlayerId)
     End Function
-
-    Public Sub ResetPlayerList()
-        PlayerList.Clear()
-    End Sub
 
     Public Function GetRowFromPlayer(p As Player) As DataGridViewRow
         For Each row As DataGridViewRow In DataGridViewPlayers.Rows

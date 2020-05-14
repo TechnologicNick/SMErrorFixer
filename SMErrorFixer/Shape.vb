@@ -4,7 +4,7 @@ Imports SMErrorFixer
 Public Class Shape
     Implements IUuidItem
 
-    Public Shared ShapeList As Dictionary(Of Integer, Shape) = New Dictionary(Of Integer, Shape)
+    'Public Shared ShapeList As Dictionary(Of Integer, Shape) = New Dictionary(Of Integer, Shape)
 
     Public Id As Integer
     Public BodyId As Integer
@@ -38,7 +38,7 @@ Public Class Shape
 
         ParseBlob()
 
-        ShapeList.Add(Me.Id, Me)
+        'ShapeList.Add(Me.Id, Me)
     End Sub
 
     Public Sub ParseBlob()
@@ -55,17 +55,6 @@ Public Class Shape
 
     Public Sub DebugData()
         Debug.WriteLine("Shape ({0}): Id = {1}, BodyId = {2}, UUID = {3}", Me.Id, Me.Id, Me.BodyId, Me.UUID)
-    End Sub
-
-
-
-
-    Public Shared Function GetShape(ShapeId As Integer)
-        Return ShapeList.Item(ShapeId)
-    End Function
-
-    Public Shared Sub ResetShapeList()
-        ShapeList.Clear()
     End Sub
 
 End Class

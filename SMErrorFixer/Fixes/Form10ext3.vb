@@ -42,11 +42,11 @@ Public Class Form10ext3
 
     Public Sub Fix(location As String)
 
-        Using connection As SQLiteConnection = New SQLiteConnection("Data Source = " + location + "; PRAGMA journal_mode = DELETE;") 'journal_mode already defaults to DELETE, but just to make sure
-            connection.Open()
+        Using connection As SQLiteConnection = DatabaseHelper.CreateConnection(location)
 
             ' Execute a random command to force SQLite to merge the journal into the database.
-            DatabaseHelper.GetSaveGameVersion(connection)
+            Dim dbHelper As DatabaseHelper = New DatabaseHelper(connection)
+            dbHelper.GetSaveGameVersion()
 
             connection.Close()
             connection.Dispose()

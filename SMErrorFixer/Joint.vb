@@ -1,7 +1,7 @@
 ﻿Public Class Joint
     Implements IUuidItem
 
-    Public Shared JointList As Dictionary(Of Integer, Joint) = New Dictionary(Of Integer, Joint)
+    'Public Shared JointList As Dictionary(Of Integer, Joint) = New Dictionary(Of Integer, Joint)
 
     Public Id As Integer
     Public ChildShapeIdA As Integer
@@ -37,7 +37,7 @@
 
         ParseBlob()
 
-        JointList.Add(Me.Id, Me)
+        'JointList.Add(Me.Id, Me)
     End Sub
 
     Public Sub ParseBlob()
@@ -54,17 +54,6 @@
 
     Public Sub DebugData()
         Debug.WriteLine("Shape ({0}): Id = {1}, ChildShapeIdA = {2}, ChildShapeIdA = {3}, UUID = {4}", Me.Id, Me.Id, Me.ChildShapeIdA, Me.ChildShapeIdB, Me.UUID)
-    End Sub
-
-
-
-
-    Public Shared Function GetShape(JointId As Integer)
-        Return JointList.Item(JointId)
-    End Function
-
-    Public Shared Sub ResetJointList()
-        JointList.Clear()
     End Sub
 
 End Class

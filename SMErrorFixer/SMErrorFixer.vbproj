@@ -115,6 +115,7 @@
     <Compile Include="Fixes\AccessDenied.vb" />
     <Compile Include="DatabaseHelper.vb" />
     <Compile Include="ErrorDatabase.vb" />
+    <Compile Include="Fixes\ExplodedGlitchweld.vb" />
     <Compile Include="Fixes\Form10ext3.Designer.vb">
       <DependentUpon>Form10ext3.vb</DependentUpon>
     </Compile>
