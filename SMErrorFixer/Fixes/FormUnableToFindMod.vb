@@ -1,12 +1,16 @@
 ﻿Imports System.IO
 Imports System.Text
 Imports System.Data.SQLite
+Imports SMHelper.Save
+Imports SMHelper.UGC.Mod
+Imports SMHelper.Util
 
 Public Class FormUnableToFindMod
     Public connection As SQLiteConnection
     Public dbHelper As DatabaseHelper
     Public ShapeList As Dictionary(Of Integer, Shape) = New Dictionary(Of Integer, Shape)
     Public JointList As Dictionary(Of Integer, Joint) = New Dictionary(Of Integer, Joint)
+    Public ModManager As SMModManager
 
     Private Sub FormUnableToFindMod_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -42,7 +46,12 @@ Public Class FormUnableToFindMod
         ShapeList = dbHelper.GetShapes()
         JointList = dbHelper.GetJoints()
 
-        ModManager.LoadMods()
+        ModManager = New SMModManager()
+        ModManager.AddVanillaMods(Environment.ExpandEnvironmentVariables(Settings.GetInstance().InstallDirectory))
+        ModManager.LoadMods({
+            UserDirectory.GetMods(),
+            Environment.ExpandEnvironmentVariables(Settings.GetInstance().WorkshopDirectory)
+        }.ToList())
 
         Dim usedMods As List(Of SMMod) = New List(Of SMMod)
         'Dim unidentifiedUuids As List(Of Guid) = New List(Of Guid)
@@ -88,11 +97,18 @@ Public Class FormUnableToFindMod
     End Sub
 
     Public Sub FindUnidentifiedUuids(ByRef list As IEnumerable(Of IUuidItem), ByVal typeName As String, ByRef usedMods As List(Of SMMod), ByRef unidentifiedUuids As Dictionary(Of Guid, (typeName As String, count As Integer)))
+        Dim UuidMap As Dictionary(Of Guid, SMMod) = New Dictionary(Of Guid, SMMod)
+
+        For Each smMod As SMMod In ModManager.ModList
+            For Each uuid As Guid In smMod.UuidList
+                UuidMap.Item(uuid) = smMod
+            Next
+        Next
 
         For Each i As IUuidItem In list
-            Dim m As SMMod = ModManager.GetModFromUuid(i.UUID)
+            If UuidMap.ContainsKey(i.UUID) Then
+                Dim m As SMMod = UuidMap.Item(i.UUID)
 
-            If m IsNot Nothing Then
                 If Not usedMods.Contains(m) Then
                     usedMods.Add(m)
                 End If

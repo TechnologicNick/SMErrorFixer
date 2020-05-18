@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports SMHelper.UGC
+Imports SMHelper.Util
 
 Public Class MissingBlueprintFile
     Public Shared Sub Fix()
